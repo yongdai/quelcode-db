@@ -38,7 +38,7 @@ CREATE TABLE chatposts (
 
 CREATE TABLE chatmembers (
     chat_room_id INT(11) NOT NULL REFERENCES chatrooms(chat_room_id),
-    member_user_id VARCHAR(255) NOT NULL REFERENCES users(user_id),
+    member_user_id INT(11) NOT NULL REFERENCES users(user_id),
     PRIMARY KEY(chat_room_id, member_user_id),
     joined_at DATETIME NOT NULL
 );
