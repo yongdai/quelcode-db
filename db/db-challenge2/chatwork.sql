@@ -4,8 +4,8 @@ CREATE TABLE users (
     password VARCHAR(100) NOT NULL,
     nickname VARCHAR(100) NOT NULL,
     self_intro VARCHAR(1000),
-    tel_mobile VARCHAR(20),
-    tel_office VARCHAR(20),
+    tel_mobile VARCHAR(13),
+    tel_office VARCHAR(13),
     is_deleted TINYINT(1) DEFAULT 0 NOT NULL,
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL
