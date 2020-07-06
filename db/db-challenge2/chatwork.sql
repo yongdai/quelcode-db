@@ -1,6 +1,6 @@
 CREATE TABLE User (
     user_id INTEGER(11) PRIMARY KEY AUTO_INCREMENT,
-    email_address VARCHAR(100) UNIQUE NOT NULL,
+    email_address VARCHAR(100) NOT NULL,
     password VARCHAR(20) NOT NULL,
     nickname VARCHAR(100) NOT NULL,
     self_intro VARCHAR(255),
@@ -37,7 +37,7 @@ CREATE TABLE Chatposts (
 
 CREATE TABLE Chatmembers (
     chat_room_id INTEGER(11) NOT NULL REFERENCES Chatrooms(chat_room_id),
-    member_user_id INTEGER(11) NOT NULL REFERENCES Users(user_id),
+    member_user_id VARCHAR(255)) NOT NULL REFERENCES Users(user_id),
     PRIMARY KEY(chat_room_id, member_user_id),
     join_date DATETIME NOT NULL
 );
