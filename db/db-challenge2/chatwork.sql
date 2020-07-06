@@ -1,9 +1,9 @@
 CREATE TABLE User (
     user_id INTEGER(11) PRIMARY KEY AUTO_INCREMENT,
     email_address VARCHAR(100) NOT NULL,
-    password VARCHAR(20) NOT NULL,
+    password VARCHAR(100) NOT NULL,
     nickname VARCHAR(100) NOT NULL,
-    self_intro VARCHAR(255),
+    self_intro VARCHAR(1000),
     tel_mobile VARCHAR(20),
     tel_office VARCHAR(20),
     is_deleted TINYINT(1) DEFAULT 0 NOT NULL,
@@ -13,7 +13,8 @@ CREATE TABLE User (
 
 CREATE TABLE Chatrooms (
     chat_room_id INTEGER(11) PRIMARY KEY AUTO_INCREMENT,
-    chat_description VARCHAR(255),
+    chat_name VARCHAR(100) NOT NULL,
+    chat_description VARCHAR(1000),
     is_file_sendable TINYINT(1) DEFAULT 1 NOT NULL,
     is_direct_chat TINYINT(1) DEFAULT 0 NOT NULL,
     is_deleted TINYINT(1) DEFAULT 0 NOT NULL,
@@ -37,14 +38,14 @@ CREATE TABLE Chatposts (
 
 CREATE TABLE Chatmembers (
     chat_room_id INTEGER(11) NOT NULL REFERENCES Chatrooms(chat_room_id),
-    member_user_id VARCHAR(255)) NOT NULL REFERENCES Users(user_id),
+    member_user_id VARCHAR(255) NOT NULL REFERENCES Users(user_id),
     PRIMARY KEY(chat_room_id, member_user_id),
     join_date DATETIME NOT NULL
 );
 
 CREATE TABLE Tasks (
     task_id INTEGER(11) PRIMARY KEY AUTO_INCREMENT,
-    task_description VARCHAR(255) NOT NULL,
+    task_description VARCHAR(1000) NOT NULL,
     task_assigned_id INTEGER(11) NOT NULL REFERENCES Users(user_id),
     due_date DATETIME,
     chat_room_id INTEGER(11) NOT NULL REFERENCES Chatrooms(chat_room_id),
